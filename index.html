@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStudio - Disseny Web Modern</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header amb navegació -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>TechStudio</h2>
+                </div>
+                
+                <!-- Menu hamburguesa per mòbil -->
+                <div class="nav-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                
+                <!-- Menu de navegació -->
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active">Inici</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#services" class="nav-link">Serveis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">Qui Som</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#portfolio" class="nav-link">Portafoli</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contacte</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Secció Hero amb efecte parallax -->
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Disseny Web del Futur</h1>
+            <p class="hero-subtitle">Creem experiències digitals úniques que converteixen visitants en clients</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-primary">Els Nostres Serveis</a>
+                <a href="#portfolio" class="btn btn-secondary">Veure Projectes</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Secció de Serveis -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Els Nostres Serveis</h2>
+                <p class="section-subtitle">Oferim solucions completes per al teu negoci digital</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Desenvolupament Web</h3>
+                    <p>Webs modernes i responsives utilitzant les últimes tecnologies del mercat.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Aplicacions Mòbils</h3>
+                    <p>Apps natives i híbrides per iOS i Android amb experiència d'usuari excel·lent.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Disseny UX/UI</h3>
+                    <p>Interfícies intuïtives i atractives que milloren l'experiència dels usuaris.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Optimització SEO</h3>
+                    <p>Millorem la visibilitat del teu lloc web als motors de cerca.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secció Qui Som -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Qui Som</h2>
+                    <p>Som un equip de professionals apassionats per la tecnologia i el disseny. Amb més de 10 anys d'experiència, hem ajudat a centenars d'empreses a establir la seva presència digital.</p>
+                    <p>La nostra missió és crear solucions web innovadores que no només siguin visualment atractives, sinó també funcionals i efectives per al creixement del teu negoci.</p>
+                    
+                    <div class="stats">
+                        <div class="stat">
+                            <h3 class="stat-number" data-target="150">0</h3>
+                            <p>Projectes Completats</p>
+                        </div>
+                        <div class="stat">
+                            <h3 class="stat-number" data-target="98">0</h3>
+                            <p>% Clients Satisfets</p>
+                        </div>
+                        <div class="stat">
+                            <h3 class="stat-number" data-target="10">0</h3>
+                            <p>Anys d'Experiència</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-users"></i>
+                        <p>El Nostre Equip</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secció Portafoli amb carrusel -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Portafoli</h2>
+                <p class="section-subtitle">Alguns dels nostres projectes més destacats</p>
+            </div>
+            
+            <div class="portfolio-carousel">
+                <div class="carousel-container">
+                    <div class="portfolio-item active">
+                        <div class="portfolio-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-laptop"></i>
+                                <p>Projecte E-commerce</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Botiga Online Premium</h3>
+                            <p>Plataforma de comerç electrònic amb sistema de pagament integrat</p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-chart-line"></i>
+                                <p>Dashboard Analítics</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Aplicació d'Analítics</h3>
+                            <p>Dashboard interactiu per visualització de dades empresarials</p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-graduation-cap"></i>
+                                <p>Plataforma Educativa</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Portal d'Aprenentatge</h3>
+                            <p>Sistema de gestió d'aprenentatge per institucions educatives</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn next" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div class="carousel-indicators">
+                    <span class="indicator active" data-slide="0"></span>
+                    <span class="indicator" data-slide="1"></span>
+                    <span class="indicator" data-slide="2"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secció de Contacte -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contacta amb Nosaltres</h2>
+                <p class="section-subtitle">Estem aquí per ajudar-te a fer realitat el teu projecte</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Adreça</h4>
+                            <p>Carrer de la Tecnologia, 123<br>08001 Barcelona, España</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Telèfon</h4>
+                            <p>+34 123 456 789</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@techstudio.cat</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="El teu nom" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="El teu email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder="Assumpte" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="El teu missatge" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Enviar Missatge</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TechStudio</h3>
+                    <p>Creem experiències digitals que transformen negocis i connecten amb audiències.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Serveis</h4>
+                    <ul>
+                        <li><a href="#">Desenvolupament Web</a></li>
+                        <li><a href="#">Aplicacions Mòbils</a></li>
+                        <li><a href="#">Disseny UX/UI</a></li>
+                        <li><a href="#">Consultoría SEO</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#">Qui Som</a></li>
+                        <li><a href="#">Equip</a></li>
+                        <li><a href="#">Carrera</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contacte</h4>
+                    <ul>
+                        <li>Barcelona, España</li>
+                        <li>+34 123 456 789</li>
+                        <li>info@techstudio.cat</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 TechStudio. Tots els drets reservats.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
