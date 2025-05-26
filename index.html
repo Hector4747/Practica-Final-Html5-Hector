@@ -3,60 +3,802 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechStudio - Disseny Web Modern</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Modern Portfolio - Agència Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+
+/* Reset i configuració base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #ffffff;
+}
+
+/* Contenidor general */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header i Navegació */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar {
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo h2 {
+    color: #6366f1;
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #6366f1;
+    background-color: rgba(99, 102, 241, 0.1);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #6366f1;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 80%;
+}
+
+/* Menu hamburguesa */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+/* Secció Hero */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    opacity: 0.9;
+    z-index: -1;
+}
+
+.hero-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><circle cx="30" cy="30" r="2"/></g></svg>');
+    animation: backgroundMove 20s linear infinite;
+}
+
+@keyframes backgroundMove {
+    0% { transform: translateX(0) translateY(0); }
+    100% { transform: translateX(-60px) translateY(-60px); }
+}
+
+.hero-content {
+    z-index: 1;
+    color: white;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.5s forwards;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.7s forwards;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.9s forwards;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: #6366f1;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #5855eb;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: #6366f1;
+    transform: translateY(-2px);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Seccions generals */
+section {
+    padding: 5rem 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Secció Serveis */
+.services {
+    background: #f8fafc;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.service-card:hover::before {
+    left: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(99, 102, 241, 0.2);
+    text-decoration: none;
+    color: inherit;
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(10deg);
+}
+
+.service-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.service-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Secció Qui Som */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #6366f1;
+    margin-bottom: 0.5rem;
+}
+
+.stat p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+}
+
+.about-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-placeholder::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+    animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.image-placeholder i {
+    z-index: 1;
+    margin-bottom: 1rem;
+}
+
+.image-placeholder p {
+    z-index: 1;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Secció Portafoli */
+.portfolio {
+    background: #f8fafc;
+}
+
+.portfolio-carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.carousel-container {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.portfolio-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-item.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.portfolio-image {
+    flex: 1;
+    margin-bottom: 2rem;
+}
+
+.portfolio-image .image-placeholder {
+    height: 100%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+}
+
+.portfolio-info h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.portfolio-info p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 20px;
+}
+
+.carousel-btn {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-btn:hover {
+    background: white;
+    transform: scale(1.1);
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: #6366f1;
+    transform: scale(1.2);
+}
+
+/* Secció Contacte */
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.contact-item h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.contact-item p {
+    color: #666;
+    margin: 0;
+}
+
+.contact-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    height: 120px;
+}
+
+/* Footer */
+.footer {
+    background: #1f2937;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.footer p {
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: #6366f1;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 2rem 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .nav-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .about-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .stats {
+        justify-content: center;
+    }
+
+    .carousel-controls {
+        padding: 0 10px;
+    }
+
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .service-card,
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+    </style>
 </head>
 <body>
-    <!-- Header amb navegació -->
+    <!-- Header -->
     <header class="header">
         <nav class="navbar">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <h2>TechStudio</h2>
+                    <h2>Digital<span style="color: #8b5cf6;">Agency</span></h2>
                 </div>
-                
-                <!-- Menu hamburguesa per mòbil -->
-                <div class="nav-toggle" id="mobile-menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-                
-                <!-- Menu de navegació -->
-                <ul class="nav-menu" id="nav-menu">
-                    <li class="nav-item">
-                        <a href="#home" class="nav-link active">Inici</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#services" class="nav-link">Serveis</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link">Qui Som</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#portfolio" class="nav-link">Portafoli</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contact" class="nav-link">Contacte</a>
-                    </li>
+                <ul class="nav-menu">
+                    <li><a href="#hero" class="nav-link active">Inici</a></li>
+                    <li><a href="#services" class="nav-link">Serveis</a></li>
+                    <li><a href="#about" class="nav-link">Qui Som</a></li>
+                    <li><a href="#portfolio" class="nav-link">Portafoli</a></li>
+                    <li><a href="#contact" class="nav-link">Contacte</a></li>
                 </ul>
+                <div class="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </div>
         </nav>
     </header>
 
-    <!-- Secció Hero amb efecte parallax -->
-    <section id="home" class="hero">
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
         <div class="hero-background"></div>
         <div class="hero-content">
-            <h1 class="hero-title">Disseny Web del Futur</h1>
-            <p class="hero-subtitle">Creem experiències digitals úniques que converteixen visitants en clients</p>
+            <h1 class="hero-title">Creem Experiències Digitals Extraordinàries</h1>
+            <p class="hero-subtitle">Transformem la teva visió en realitat digital amb dissenys innovadors i solucions tecnològiques d'avantguarda</p>
             <div class="hero-buttons">
-                <a href="#services" class="btn btn-primary">Els Nostres Serveis</a>
-                <a href="#portfolio" class="btn btn-secondary">Veure Projectes</a>
+                <a href="#services" class="btn btn-primary">Descobreix els Nostres Serveis</a>
+                <a href="#portfolio" class="btn btn-secondary">Veure Portafoli</a>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -64,75 +806,83 @@
         </div>
     </section>
 
-    <!-- Secció de Serveis -->
+    <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Els Nostres Serveis</h2>
-                <p class="section-subtitle">Oferim solucions completes per al teu negoci digital</p>
+                <p class="section-subtitle">Oferim una àmplia gamma de serveis digitals per portar el teu negoci al següent nivell</p>
             </div>
-            
             <div class="services-grid">
-                <div class="service-card">
+                <a href="desenvolupament.html" class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-code"></i>
                     </div>
                     <h3>Desenvolupament Web</h3>
-                    <p>Webs modernes i responsives utilitzant les últimes tecnologies del mercat.</p>
-                </div>
-                
-                <div class="service-card">
+                    <p>Creem webs modernes, responsives i optimitzades per oferir la millor experiència d'usuari possible.</p>
+                </a>
+                <a href="#" class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Disseny UI/UX</h3>
+                    <p>Dissenyem interfícies intuïtives i atractives que connecten amb els teus usuaris i milloren la conversió.</p>
+                </a>
+                <a href="aplicacionsmobils.html" class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>Aplicacions Mòbils</h3>
-                    <p>Apps natives i híbrides per iOS i Android amb experiència d'usuari excel·lent.</p>
-                </div>
-                
-                <div class="service-card">
+                    <h3>Apps Mòbils</h3>
+                    <p>Desenvolupem aplicacions mòbils natives i híbrides per a iOS i Android amb les últimes tecnologies.</p>
+                </a>
+                <a href="#" class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-paint-brush"></i>
+                        <i class="fas fa-search"></i>
                     </div>
-                    <h3>Disseny UX/UI</h3>
-                    <p>Interfícies intuïtives i atractives que milloren l'experiència dels usuaris.</p>
-                </div>
-                
-                <div class="service-card">
+                    <h3>SEO & Marketing</h3>
+                    <p>Optimitzem la teva presència online per millorar el posicionament i augmentar la visibilitat del teu negoci.</p>
+                </a>
+                <a href="solucionscloud.html" class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-rocket"></i>
+                        <i class="fas fa-cloud"></i>
                     </div>
-                    <h3>Optimització SEO</h3>
-                    <p>Millorem la visibilitat del teu lloc web als motors de cerca.</p>
-                </div>
+                    <h3>Solucions Cloud</h3>
+                    <p>Implementem infraestructures cloud escalables i segures per optimitzar el rendiment del teu negoci.</p>
+                </a>
+                <a href="#" class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analítica Digital</h3>
+                    <p>Mesurem i analitzem el rendiment digital per prendre decisions basades en dades reals.</p>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Secció Qui Som -->
+    <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
                     <h2>Qui Som</h2>
-                    <p>Som un equip de professionals apassionats per la tecnologia i el disseny. Amb més de 10 anys d'experiència, hem ajudat a centenars d'empreses a establir la seva presència digital.</p>
-                    <p>La nostra missió és crear solucions web innovadores que no només siguin visualment atractives, sinó també funcionals i efectives per al creixement del teu negoci.</p>
-                    
+                    <p>Som una agència digital amb passió per la innovació i l'excel·lència. El nostre equip multidisciplinari combina creativitat i tecnologia per crear solucions digitals que impulsen el creixement dels nostres clients.</p>
+                    <p>Amb més de 10 anys d'experiència en el sector, hem ajudat a centenars d'empreses a transformar-se digitalment i aconseguir els seus objectius online.</p>
                     <div class="stats">
                         <div class="stat">
-                            <h3 class="stat-number" data-target="150">0</h3>
+                            <div class="stat-number">150+</div>
                             <p>Projectes Completats</p>
                         </div>
                         <div class="stat">
-                            <h3 class="stat-number" data-target="98">0</h3>
-                            <p>% Clients Satisfets</p>
+                            <div class="stat-number">95%</div>
+                            <p>Clients Satisfets</p>
                         </div>
                         <div class="stat">
-                            <h3 class="stat-number" data-target="10">0</h3>
+                            <div class="stat-number">10+</div>
                             <p>Anys d'Experiència</p>
                         </div>
                     </div>
                 </div>
-                
                 <div class="about-image">
                     <div class="image-placeholder">
                         <i class="fas fa-users"></i>
@@ -143,94 +893,78 @@
         </div>
     </section>
 
-    <!-- Secció Portafoli amb carrusel -->
+    <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Portafoli</h2>
-                <p class="section-subtitle">Alguns dels nostres projectes més destacats</p>
+                <h2 class="section-title">El Nostre Portafoli</h2>
+                <p class="section-subtitle">Descobreix alguns dels nostres projectes més destacats</p>
             </div>
-            
             <div class="portfolio-carousel">
                 <div class="carousel-container">
                     <div class="portfolio-item active">
                         <div class="portfolio-image">
                             <div class="image-placeholder">
-                                <i class="fas fa-laptop"></i>
-                                <p>Projecte E-commerce</p>
+                                <i class="fas fa-shopping-cart"></i>
+                                <p>E-commerce</p>
                             </div>
                         </div>
                         <div class="portfolio-info">
                             <h3>Botiga Online Premium</h3>
-                            <p>Plataforma de comerç electrònic amb sistema de pagament integrat</p>
+                            <p>Una plataforma e-commerce completa amb sistema de pagament integrat, gestió d'inventari i experiència d'usuari optimitzada.</p>
                         </div>
                     </div>
-                    
                     <div class="portfolio-item">
                         <div class="portfolio-image">
                             <div class="image-placeholder">
-                                <i class="fas fa-chart-line"></i>
-                                <p>Dashboard Analítics</p>
+                                <i class="fas fa-mobile-alt"></i>
+                                <p>App Mòbil</p>
                             </div>
                         </div>
                         <div class="portfolio-info">
-                            <h3>Aplicació d'Analítics</h3>
-                            <p>Dashboard interactiu per visualització de dades empresarials</p>
+                            <h3>Aplicació de Fitness</h3>
+                            <p>Una app mòbil nativa amb seguiment d'exercicis, plans personalitzats i integració amb dispositius wearables.</p>
                         </div>
                     </div>
-                    
                     <div class="portfolio-item">
                         <div class="portfolio-image">
                             <div class="image-placeholder">
-                                <i class="fas fa-graduation-cap"></i>
-                                <p>Plataforma Educativa</p>
+                                <i class="fas fa-building"></i>
+                                <p>Web Corporativa</p>
                             </div>
                         </div>
                         <div class="portfolio-info">
-                            <h3>Portal d'Aprenentatge</h3>
-                            <p>Sistema de gestió d'aprenentatge per institucions educatives</p>
+                            <h3>Portal Corporatiu</h3>
+                            <p>Un lloc web corporatiu modern amb sistema de gestió de continguts, blog integrat i optimització SEO.</p>
                         </div>
                     </div>
                 </div>
-                
                 <div class="carousel-controls">
-                    <button class="carousel-btn prev" id="prevBtn">
+                    <button class="carousel-btn" id="prevBtn">
                         <i class="fas fa-chevron-left"></i>
                     </button>
-                    <button class="carousel-btn next" id="nextBtn">
+                    <button class="carousel-btn" id="nextBtn">
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
-                
                 <div class="carousel-indicators">
-                    <span class="indicator active" data-slide="0"></span>
-                    <span class="indicator" data-slide="1"></span>
-                    <span class="indicator" data-slide="2"></span>
+                    <div class="indicator active" data-index="0"></div>
+                    <div class="indicator" data-index="1"></div>
+                    <div class="indicator" data-index="2"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Secció de Contacte -->
+    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Contacta amb Nosaltres</h2>
-                <p class="section-subtitle">Estem aquí per ajudar-te a fer realitat el teu projecte</p>
+                <p class="section-subtitle">Estàs preparat per començar el teu projecte? Parlem!</p>
             </div>
-            
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h4>Adreça</h4>
-                            <p>Carrer de la Tecnologia, 123<br>08001 Barcelona, España</p>
-                        </div>
-                    </div>
-                    
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-phone"></i>
@@ -239,94 +973,3 @@
                             <h4>Telèfon</h4>
                             <p>+34 123 456 789</p>
                         </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>info@techstudio.cat</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="El teu nom" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="El teu email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="text" id="subject" name="subject" placeholder="Assumpte" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <textarea id="message" name="message" placeholder="El teu missatge" rows="5" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">Enviar Missatge</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>TechStudio</h3>
-                    <p>Creem experiències digitals que transformen negocis i connecten amb audiències.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Serveis</h4>
-                    <ul>
-                        <li><a href="#">Desenvolupament Web</a></li>
-                        <li><a href="#">Aplicacions Mòbils</a></li>
-                        <li><a href="#">Disseny UX/UI</a></li>
-                        <li><a href="#">Consultoría SEO</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Empresa</h4>
-                    <ul>
-                        <li><a href="#">Qui Som</a></li>
-                        <li><a href="#">Equip</a></li>
-                        <li><a href="#">Carrera</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Contacte</h4>
-                    <ul>
-                        <li>Barcelona, España</li>
-                        <li>+34 123 456 789</li>
-                        <li>info@techstudio.cat</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 TechStudio. Tots els drets reservats.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Script JavaScript -->
-    <script src="script.js"></script>
-</body>
-</html>
