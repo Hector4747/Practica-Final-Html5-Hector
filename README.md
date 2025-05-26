@@ -44,3 +44,9 @@ I de estils hi ha aixo:
 - Tipografia moderna clara i llegible.
 
 - Ús d’espais en blanc per donar respiració visual i ordre.
+
+### 4. Decisions de disseny i raonaments.
+- El diseny el vaig escollir perque son colors molt clars i perque capta la visio de la gent.
+
+### 5. Captures de pantalla del resultat final.
+
